@@ -20,8 +20,8 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/BrandonJohnGrenier/pattern-commons.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <distributionManagement>
          <repository>
