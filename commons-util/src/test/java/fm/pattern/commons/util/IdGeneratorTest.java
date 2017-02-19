@@ -24,14 +24,14 @@ public class IdGeneratorTest {
 
 	@Test
 	public void shouldNotGenerateAnIdWithAPrefixIfThePrefixIsEmpty() {
-		assertThat(IdGenerator.generateId("").length()).isEqualTo(16);
-		assertThat(IdGenerator.generateId((String) null).length()).isEqualTo(16);
+		assertThat(IdGenerator.generateId("").length()).isEqualTo(25);
+		assertThat(IdGenerator.generateId((String) null).length()).isEqualTo(25);
 	}
 
 	@Test
-	public void shouldBeAbleToCreateAnIdWith16CharactersInLengthIfTheLengthIsNotSpecified() {
+	public void shouldCreateAnIdWith25CharactersByDefaultIfTheLengthIsNotSpecified() {
 		String id = IdGenerator.generateId();
-		assertThat(id.length()).isEqualTo(16);
+		assertThat(id.length()).isEqualTo(25);
 	}
 
 	@Test
@@ -40,4 +40,10 @@ public class IdGeneratorTest {
 		assertThat(id.length()).isEqualTo(15);
 	}
 
+	@Test
+	public void shouldBeAbleToGenerateAnIdWithTheSpecifiedLengthAndTheSpecifiedPrefix() {
+		String id = IdGenerator.generateId("cus", 20);
+		assertThat(id.length()).isEqualTo(20);
+	}
+	
 }

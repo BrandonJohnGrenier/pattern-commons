@@ -23,6 +23,10 @@ public final class IdGenerator {
 		return RandomStringUtils.randomAlphabetic(1).toLowerCase() + secure.toLowerCase();
 	}
 
+	public static String generateId(String prefix, Integer length) {
+		return isBlank(prefix) ? generateId(length) : prefix + "_" + generateId(length - prefix.length() - 1);
+	}
+
 	public static String generateId() {
 		return generateId(25);
 	}
