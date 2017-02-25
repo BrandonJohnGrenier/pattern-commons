@@ -17,5 +17,8 @@
 
 MVN_SETTINGS=settings.xml
 
+git config --global user.email "brandon.john.grenier@gmail.com"
+git config --global user.name "Brandon Grenier"
+
 mvn release:clean release:prepare --settings ${MVN_SETTINGS} -B -DautoVersionSubmodules=true -DskipTests=true -Darguments="--settings ${MVN_SETTINGS}"
 mvn release:perform --settings ${MVN_SETTINGS} -B -Darguments="--settings ${MVN_SETTINGS}"
