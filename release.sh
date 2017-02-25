@@ -22,5 +22,5 @@ git checkout -qf master
 git config --global user.email "brandon.john.grenier@gmail.com"
 git config --global user.name "Brandon Grenier"
 
-mvn release:clean release:prepare --settings ${MVN_SETTINGS} -B -DautoVersionSubmodules=true -DskipTests=true -Darguments="--settings ${MVN_SETTINGS}"
+mvn release:clean release:prepare --settings ${MVN_SETTINGS} -B -Dusername=env.GIT_REPO_USERNAME -Dpassword=env.GIT_REPO_PASSWORD -DautoVersionSubmodules=true -DskipTests=true -Darguments="--settings ${MVN_SETTINGS}"
 mvn release:perform --settings ${MVN_SETTINGS} -B -Dusername=env.GIT_REPO_USERNAME -Dpassword=env.GIT_REPO_PASSWORD -Darguments="--settings ${MVN_SETTINGS}"
