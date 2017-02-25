@@ -82,7 +82,7 @@ public final class ReflectionUtils {
 		}
 	}
 
-	private static Class targetClass(Class c, int generations) {
+	private static Class targetClass(Class c, Integer generations) {
 		if (generations == 0) {
 			return c;
 		}
