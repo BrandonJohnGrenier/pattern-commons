@@ -1,3 +1,19 @@
+/*
+ * Copyright 2012-2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package fm.pattern.commons.util;
 
 import java.lang.reflect.Field;
@@ -12,7 +28,8 @@ public final class ReflectionUtils {
 	}
 
 	public static String getString(Object instance, String property) {
-		return (String) getObject(instance, property);
+		Object object = getObject(instance, property);
+		return (object instanceof String) ? (String) object : null;
 	}
 
 	public static Object getObject(Object instance, String property) {
@@ -20,7 +37,6 @@ public final class ReflectionUtils {
 			return PropertyUtils.getProperty(instance, property);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -29,11 +45,7 @@ public final class ReflectionUtils {
 		setValue(instance, attribute, value, 0);
 	}
 
-	public static void setValueOnSuperclass(Object instance, String attribute, Object value) {
-		setValue(instance, attribute, value, 1);
-	}	
-	
-	public static void setValue(Object instance, String attribute, Object value, int ancestor) {
+	public static void setValue(Object instance, String attribute, Object value, Integer ancestor) {
 		String[] fields = attribute.contains(".") ? attribute.split("\\.") : new String[] { attribute };
 		try {
 			Field field = getTargetField(instance.getClass(), fields, 0, ancestor);

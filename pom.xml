@@ -17,19 +17,19 @@
         <maven.javadoc.skip>true</maven.javadoc.skip>
     </properties>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>    
+    
     <scm>
         <developerConnection>scm:git:https://github.com/BrandonJohnGrenier/pattern-commons.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
-    <licenses>
-        <license>
-          <name>Apache License, Version 2.0</name>
-          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-          <distribution>repo</distribution>
-        </license>
-    </licenses>      
-    
     <distributionManagement>
          <repository>
              <id>pattern-release-repo</id>
