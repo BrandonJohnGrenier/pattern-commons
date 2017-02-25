@@ -53,7 +53,7 @@ public final class ReflectionUtils {
 			field.set(object, value);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			return;
 		}
 	}
 
@@ -65,7 +65,6 @@ public final class ReflectionUtils {
 			return (index + 1) == fields.length ? field : getTargetField(field.getType(), fields, index + 1, 0);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -77,7 +76,6 @@ public final class ReflectionUtils {
 			return (index + 2) == fields.length ? field.get(object) : getTargetObject(field.get(object), fields, index + 1, ancestors);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
