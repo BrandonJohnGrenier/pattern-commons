@@ -17,6 +17,8 @@
 
 MVN_SETTINGS=settings.xml
 
+git checkout -qf master
+
 git config --global user.email "brandon.john.grenier@gmail.com"
 git config --global user.name "Brandon Grenier"
 
