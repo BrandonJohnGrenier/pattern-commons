@@ -17,5 +17,5 @@
 
 MVN_SETTINGS=settings.xml
 
-mvn release:prepare -X -e --settings ${MVN_SETTINGS} -Darguments="--settings ${MVN_SETTINGS}"
+mvn release:clean release:prepare --settings ${MVN_SETTINGS} -DautoVersionSubmodules=true -DskipTests=true -Darguments="--settings ${MVN_SETTINGS}"
 mvn release:perform --settings ${MVN_SETTINGS} -B -Darguments="--settings ${MVN_SETTINGS}"
