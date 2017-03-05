@@ -19,9 +19,13 @@ package fm.pattern.commons.util;
 import java.lang.reflect.Field;
 
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 @SuppressWarnings({ "rawtypes" })
 public final class ReflectionUtils {
+
+	private static final Log log = LogFactory.getLog(ReflectionUtils.class);
 
 	private ReflectionUtils() {
 
@@ -37,6 +41,7 @@ public final class ReflectionUtils {
 			return PropertyUtils.getProperty(instance, property);
 		}
 		catch (Exception e) {
+			log.error("Failed to get property:", e);
 			return null;
 		}
 	}
@@ -53,6 +58,7 @@ public final class ReflectionUtils {
 			field.set(object, value);
 		}
 		catch (Exception e) {
+			log.error("Unable to set value:", e);
 			return;
 		}
 	}
@@ -65,6 +71,7 @@ public final class ReflectionUtils {
 			return (index + 1) == fields.length ? field : getTargetField(field.getType(), fields, index + 1, 0);
 		}
 		catch (Exception e) {
+			log.error("Unable to get target field:", e);
 			return null;
 		}
 	}
@@ -76,6 +83,7 @@ public final class ReflectionUtils {
 			return (index + 2) == fields.length ? field.get(object) : getTargetObject(field.get(object), fields, index + 1, ancestors);
 		}
 		catch (Exception e) {
+			log.error("Unable to get target object:", e);
 			return null;
 		}
 	}
@@ -87,7 +95,7 @@ public final class ReflectionUtils {
 
 		Class ancestor = null;
 		for (int i = 0; i < generations; i++) {
-			ancestor = (ancestor == null ? c.getSuperclass() : ancestor.getSuperclass());
+			ancestor = ancestor == null ? c.getSuperclass() : ancestor.getSuperclass();
 		}
 		return ancestor;
 	}
