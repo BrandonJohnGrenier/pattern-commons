@@ -90,4 +90,15 @@ public class ReflectionUtilsTest {
 		assertThat(model.getModel().getMinutes()).isEqualTo(null);
 	}
 	
+	@Test
+	public void shouldNotBeAbleToSetThePropertyValueOnAnObjectWhenTheObjectIsNull() {
+		SimpleModel model = new SimpleModel("value", "value", 200);
+
+		ReflectionUtils.setValue(null, "key", "some key", 1);
+		ReflectionUtils.setValue(model, null, "some value", 1);
+
+		assertThat(model.getKey()).isEqualTo(null);
+		assertThat(model.getValue()).isEqualTo(null);
+	}
+	
 }

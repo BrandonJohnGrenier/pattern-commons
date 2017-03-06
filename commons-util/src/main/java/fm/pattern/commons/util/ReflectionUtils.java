@@ -46,9 +46,9 @@ public final class ReflectionUtils {
 	}
 
 	public static void setValue(Object instance, String attribute, Object value, Integer ancestor) {
-		String[] fields = attribute.contains(".") ? attribute.split("\\.") : new String[] { attribute };
-		
 		try {
+			String[] fields = attribute.contains(".") ? attribute.split("\\.") : new String[] { attribute };
+
 			Field field = getTargetField(instance.getClass(), fields, 0, ancestor);
 			if (field == null) {
 				return;
