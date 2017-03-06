@@ -5,7 +5,7 @@
 
    <groupId>fm.pattern.commons</groupId>
    <artifactId>pattern-commons</artifactId>
-   <version>1.0.14</version>
+   <version>1.0.15-SNAPSHOT</version>
    <packaging>pom</packaging>
 
    <properties>
@@ -27,7 +27,7 @@
 
    <scm>
       <developerConnection>scm:git:https://github.com/BrandonJohnGrenier/pattern-commons.git</developerConnection>
-      <tag>pattern-commons-1.0.14.RELEASE</tag>
+      <tag>HEAD</tag>
    </scm>
 
    <distributionManagement>
