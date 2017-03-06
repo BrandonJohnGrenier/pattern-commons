@@ -99,7 +99,7 @@
             <configuration>
                <goals>deploy</goals>
                <autoversionsubmodules>true</autoversionsubmodules>
-               <tagNameFormat>pattern-commons-@{project.version}.RELEASE</tagNameFormat>
+               <tagNameFormat>pattern-commons-@{project.version}</tagNameFormat>
             </configuration>
             <dependencies>
                <dependency>
