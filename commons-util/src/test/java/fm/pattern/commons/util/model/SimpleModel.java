@@ -22,6 +22,8 @@ public class SimpleModel extends ParentModel {
 	private String last;
 	private Integer total;
 
+	private ComposedModel model;
+
 	public SimpleModel() {
 
 	}
@@ -54,6 +56,14 @@ public class SimpleModel extends ParentModel {
 
 	public void setTotal(Integer total) {
 		this.total = total;
+	}
+
+	public ComposedModel getModel() {
+		return model;
+	}
+
+	public void setModel(ComposedModel model) {
+		this.model = model;
 	}
 
 }

@@ -20,6 +20,7 @@ import static org.assertj.core.api.StrictAssertions.assertThat;
 
 import org.junit.Test;
 
+import fm.pattern.commons.util.model.ComposedModel;
 import fm.pattern.commons.util.model.SimpleModel;
 
 public class ReflectionUtilsTest {
@@ -63,4 +64,30 @@ public class ReflectionUtilsTest {
 		assertThat(model.getValue()).isEqualTo("some value");
 	}
 
+	@Test
+	public void shouldBeAbleToSetThePropertyValueOnAComposedObject() {
+		ComposedModel composed = new ComposedModel();
+		SimpleModel model = new SimpleModel("value", "value", 200);
+		model.setModel(composed);
+
+		ReflectionUtils.setValue(model, "model.minutes", 20);
+		ReflectionUtils.setValue(model, "model.hours", 20);
+
+		assertThat(model.getModel().getHours()).isEqualTo(20);
+		assertThat(model.getModel().getMinutes()).isEqualTo(20);
+	}
+
+	@Test
+	public void shouldNotBeAbleToSetThePropertyValueOnAComposedObjectWhenThePropertyNameIsInvalid() {
+		ComposedModel composed = new ComposedModel();
+		SimpleModel model = new SimpleModel("value", "value", 200);
+		model.setModel(composed);
+
+		ReflectionUtils.setValue(model, "mdel.minutes", 20);
+		ReflectionUtils.setValue(model, "moel.ours", 20);
+
+		assertThat(model.getModel().getHours()).isEqualTo(null);
+		assertThat(model.getModel().getMinutes()).isEqualTo(null);
+	}
+	
 }
