@@ -31,12 +31,7 @@ public final class ReflectionUtils {
 
 	}
 
-	public static String getString(Object instance, String property) {
-		Object object = getObject(instance, property);
-		return (object instanceof String) ? (String) object : null;
-	}
-
-	public static Object getObject(Object instance, String property) {
+	public static Object getValue(Object instance, String property) {
 		try {
 			return PropertyUtils.getProperty(instance, property);
 		}
@@ -46,14 +41,19 @@ public final class ReflectionUtils {
 		}
 	}
 
-	public static void setValue(Object instance, String attribute, Object value) {
-		setValue(instance, attribute, value, 0);
+	public static void setValue(Object instance, String property, Object value) {
+		setValue(instance, property, value, 0);
 	}
 
 	public static void setValue(Object instance, String attribute, Object value, Integer ancestor) {
 		String[] fields = attribute.contains(".") ? attribute.split("\\.") : new String[] { attribute };
+		
 		try {
 			Field field = getTargetField(instance.getClass(), fields, 0, ancestor);
+			if (field == null) {
+				return;
+			}
+
 			Object object = attribute.contains(".") ? getTargetObject(instance, fields, 0, ancestor) : instance;
 			field.set(object, value);
 		}
@@ -63,11 +63,16 @@ public final class ReflectionUtils {
 		}
 	}
 
-	private static Field getTargetField(Class c, String[] fields, int index, int generations) {
+	private static Field getTargetField(Class c, String[] fields, int index, int ancestors) {
 		try {
-			Class targetClass = targetClass(c, generations);
+			Class targetClass = targetClass(c, ancestors);
+			if (targetClass == null) {
+				return null;
+			}
+
 			Field field = targetClass.getDeclaredField(fields[index]);
 			field.setAccessible(true);
+
 			return (index + 1) == fields.length ? field : getTargetField(field.getType(), fields, index + 1, 0);
 		}
 		catch (Exception e) {
@@ -78,8 +83,14 @@ public final class ReflectionUtils {
 
 	private static Object getTargetObject(Object object, String[] fields, int index, int ancestors) {
 		try {
-			Field field = targetClass(object.getClass(), ancestors).getDeclaredField(fields[index]);
+			Class targetClass = targetClass(object.getClass(), ancestors);
+			if (targetClass == null) {
+				return null;
+			}
+
+			Field field = targetClass.getDeclaredField(fields[index]);
 			field.setAccessible(true);
+
 			return (index + 2) == fields.length ? field.get(object) : getTargetObject(field.get(object), fields, index + 1, ancestors);
 		}
 		catch (Exception e) {
@@ -88,13 +99,13 @@ public final class ReflectionUtils {
 		}
 	}
 
-	private static Class targetClass(Class c, Integer generations) {
-		if (generations == 0) {
+	private static Class targetClass(Class c, Integer ancestors) {
+		if (ancestors == 0) {
 			return c;
 		}
 
 		Class ancestor = null;
-		for (int i = 0; i < generations; i++) {
+		for (int i = 0; i < ancestors; i++) {
 			ancestor = ancestor == null ? c.getSuperclass() : ancestor.getSuperclass();
 		}
 		return ancestor;

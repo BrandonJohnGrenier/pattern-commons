@@ -36,11 +36,11 @@ public final class IdGenerator {
 
 	public static String generateId(Integer length) {
 		String secure = RandomStringUtils.random((length - 1), 0, 0, true, true, null, random);
-		return RandomStringUtils.randomAlphabetic(1).toLowerCase() + secure.toLowerCase();
+		return RandomStringUtils.randomAlphabetic(1).toLowerCase() + secure;
 	}
 
 	public static String generateId(String prefix, Integer length) {
-		return isBlank(prefix) ? generateId(length) : prefix + "_" + generateId(length - prefix.length() - 1);
+		return isBlank(prefix) ? generateId(length) : prefix + "_" + generateId(length);
 	}
 
 	public static String generateId() {

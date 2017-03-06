@@ -59,7 +59,15 @@ public class IdGeneratorTest {
 	@Test
 	public void shouldBeAbleToGenerateAnIdWithTheSpecifiedLengthAndTheSpecifiedPrefix() {
 		String id = IdGenerator.generateId("cus", 20);
-		assertThat(id.length()).isEqualTo(20);
+		assertThat(id.startsWith("cus_"));
+		assertThat(id.length()).isEqualTo(24);
+	}
+	
+	@Test
+	public void shouldGenerateAnIdWithTheSpecifiedLengthIfThePrefixIsNullOrEmpty() {
+		assertThat(IdGenerator.generateId(null, 20).length()).isEqualTo(20);
+		assertThat(IdGenerator.generateId("", 20).length()).isEqualTo(20);
+		assertThat(IdGenerator.generateId("  ", 20).length()).isEqualTo(20);
 	}
 	
 }

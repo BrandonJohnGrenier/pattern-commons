@@ -25,25 +25,22 @@ import fm.pattern.commons.util.model.SimpleModel;
 public class ReflectionUtilsTest {
 
 	@Test
-	public void shouldBeAbleToExtractAStringValueFromAnObject() {
+	public void shouldBeAbleToReturnAPropertyValueFromAnObject() {
 		SimpleModel model = new SimpleModel("value", "value", 200);
 
-		assertThat(ReflectionUtils.getString(model, "first")).isEqualTo("value");
-		assertThat(ReflectionUtils.getString(model, "last")).isEqualTo("value");
-		assertThat(ReflectionUtils.getString(model, "total")).isEqualTo(null);
+		assertThat(ReflectionUtils.getValue(model, "first")).isEqualTo("value");
+		assertThat(ReflectionUtils.getValue(model, "last")).isEqualTo("value");
+		assertThat(ReflectionUtils.getValue(model, "total")).isEqualTo(200);
 	}
 
 	@Test
-	public void shouldBeAbleToExtractAnObjectFromAnObject() {
+	public void shouldNotBeAbleToReturnAPropertyValueFromAnObjectWhenThePropertyDoesNotExist() {
 		SimpleModel model = new SimpleModel("value", "value", 200);
-
-		assertThat(ReflectionUtils.getObject(model, "first")).isEqualTo("value");
-		assertThat(ReflectionUtils.getObject(model, "last")).isEqualTo("value");
-		assertThat(ReflectionUtils.getObject(model, "total")).isEqualTo(200);
+		assertThat(ReflectionUtils.getValue(model, "invalid")).isNull();
 	}
 
 	@Test
-	public void shouldBeAbleToSetAnObjectValue() {
+	public void shouldBeAbleToSetThePropertyValueOfTheTargetObject() {
 		SimpleModel model = new SimpleModel("value", "value", 200);
 
 		ReflectionUtils.setValue(model, "first", "another value");
@@ -53,6 +50,17 @@ public class ReflectionUtilsTest {
 		assertThat(model.getFirst()).isEqualTo("another value");
 		assertThat(model.getLast()).isEqualTo("another value");
 		assertThat(model.getTotal()).isEqualTo(500);
+	}
+
+	@Test
+	public void shouldBeAbleToSetThePropertyValueOnASuperclassOfTheTargetObject() {
+		SimpleModel model = new SimpleModel("value", "value", 200);
+
+		ReflectionUtils.setValue(model, "key", "some key", 1);
+		ReflectionUtils.setValue(model, "value", "some value", 1);
+
+		assertThat(model.getKey()).isEqualTo("some key");
+		assertThat(model.getValue()).isEqualTo("some value");
 	}
 
 }

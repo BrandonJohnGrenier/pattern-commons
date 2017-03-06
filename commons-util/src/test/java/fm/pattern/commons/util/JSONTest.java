@@ -24,6 +24,8 @@ import fm.pattern.commons.util.model.SimpleModel;
 
 public class JSONTest {
 
+	private static final String JSON_STRING = "{\"first\":\"first\",\"last\":\"last\",\"total\":55}";
+
 	@Test
 	public void shouldBeAbleToStringifyAnObject() {
 		SimpleModel model = new SimpleModel();
@@ -32,15 +34,20 @@ public class JSONTest {
 		model.setTotal(55);
 
 		String string = JSON.stringify(model);
-		assertThat(string).isEqualTo("{\"first\":\"first\",\"last\":\"last\",\"total\":55}");
+		assertThat(string).isEqualTo(JSON_STRING);
 	}
 
 	@Test
 	public void shouldBeAbleToObjectifyAString() {
-		SimpleModel model = JSON.objectify("{\"first\":\"first\",\"last\":\"last\",\"total\":55}", SimpleModel.class);
+		SimpleModel model = JSON.objectify(JSON_STRING, SimpleModel.class);
 		assertThat(model.getFirst()).isEqualTo("first");
 		assertThat(model.getLast()).isEqualTo("last");
 		assertThat(model.getTotal()).isEqualTo(55);
+	}
+
+	@Test(expected = JsonParsingException.class)
+	public void shouldThrowAParsingExceptionWhenAJSONStringCannotBeParsed() {
+		JSON.objectify("no{}", SimpleModel.class);
 	}
 
 }

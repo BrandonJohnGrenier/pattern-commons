@@ -16,44 +16,29 @@
 
 package fm.pattern.commons.util.model;
 
-public class SimpleModel extends ParentModel {
+public class ParentModel {
 
-	private String first;
-	private String last;
-	private Integer total;
+	private String key;
+	private String value;
 
-	public SimpleModel() {
+	public ParentModel() {
 
 	}
 
-	public SimpleModel(String first, String last, Integer total) {
-		this.first = first;
-		this.last = last;
-		this.total = total;
+	public String getKey() {
+		return key;
 	}
 
-	public String getFirst() {
-		return first;
+	public void setKey(String key) {
+		this.key = key;
 	}
 
-	public void setFirst(String first) {
-		this.first = first;
+	public String getValue() {
+		return value;
 	}
 
-	public String getLast() {
-		return last;
-	}
-
-	public void setLast(String last) {
-		this.last = last;
-	}
-
-	public Integer getTotal() {
-		return total;
-	}
-
-	public void setTotal(Integer total) {
-		this.total = total;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 }

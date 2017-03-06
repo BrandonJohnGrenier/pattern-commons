@@ -16,12 +16,9 @@
 
 package fm.pattern.commons.util;
 
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@SuppressWarnings("unchecked")
 public final class JSON {
 
 	private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -46,15 +43,6 @@ public final class JSON {
 	public static String stringify(Object object) {
 		try {
 			return objectMapper.writeValueAsString(object);
-		}
-		catch (Exception e) {
-			throw new JsonParsingException(e);
-		}
-	}
-
-	public static Map<String, Object> map(Object object) {
-		try {
-			return objectMapper.convertValue(object, Map.class);
 		}
 		catch (Exception e) {
 			throw new JsonParsingException(e);
