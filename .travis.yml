@@ -11,4 +11,4 @@ script:
   - mvn clean test jacoco:report coveralls:report
 
 after_success:
- - mvn deploy -DskipTests=true
+ - ./deploy
