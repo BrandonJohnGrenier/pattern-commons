@@ -7,6 +7,8 @@ cache:
   directories:
   - $HOME/.m2
 
+script:
+  - mvn clean test jacoco:report coveralls:report
+
 after_success:
- - mvn clean test jacoco:report coveralls:report
- - ./release.sh
+ - mvn deploy -DskipTests=true
