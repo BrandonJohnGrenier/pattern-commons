@@ -36,7 +36,7 @@ public final class ReflectionUtils {
 			return PropertyUtils.getProperty(instance, property);
 		}
 		catch (Exception e) {
-			log.error("Failed to get property:", e);
+			log.warn("Failed to get property '" + property + "':", e);
 			return null;
 		}
 	}
@@ -58,7 +58,7 @@ public final class ReflectionUtils {
 			field.set(object, value);
 		}
 		catch (Exception e) {
-			log.error("Unable to set value:", e);
+			log.warn("Unable to set value:", e);
 			return;
 		}
 	}
@@ -76,7 +76,7 @@ public final class ReflectionUtils {
 			return (index + 1) == fields.length ? field : getTargetField(field.getType(), fields, index + 1, 0);
 		}
 		catch (Exception e) {
-			log.error("Unable to get target field:", e);
+			log.warn("Unable to get target field:", e);
 			return null;
 		}
 	}
@@ -104,11 +104,11 @@ public final class ReflectionUtils {
 			return c;
 		}
 
-		Class ancestor = null;
+		Class target = null;
 		for (int i = 0; i < ancestors; i++) {
-			ancestor = ancestor == null ? c.getSuperclass() : ancestor.getSuperclass();
+			target = target == null ? c.getSuperclass() : target.getSuperclass();
 		}
-		return ancestor;
+		return target;
 	}
 
 }
