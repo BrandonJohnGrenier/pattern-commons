@@ -24,7 +24,8 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 public final class IdGenerator {
 
-	private static SecureRandom random = new SecureRandom();
+	private static Integer DEFAULT_LENGTH = 25;
+	private static SecureRandom RANDOM_SOURCE = new SecureRandom();
 
 	private IdGenerator() {
 
@@ -35,8 +36,7 @@ public final class IdGenerator {
 	}
 
 	public static String generateId(Integer length) {
-		String secure = RandomStringUtils.random((length - 1), 0, 0, true, true, null, random);
-		return RandomStringUtils.randomAlphabetic(1).toLowerCase() + secure;
+		return RandomStringUtils.random(length, 0, 0, true, true, null, RANDOM_SOURCE);
 	}
 
 	public static String generateId(String prefix, Integer length) {
@@ -44,7 +44,7 @@ public final class IdGenerator {
 	}
 
 	public static String generateId() {
-		return generateId(25);
+		return generateId(DEFAULT_LENGTH);
 	}
 
 }

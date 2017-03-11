@@ -50,4 +50,9 @@ public class JSONTest {
 		JSON.objectify("no{}", SimpleModel.class);
 	}
 
+	@Test
+	public void theClassShouldBeAWellDefinedUtilityClass() {
+		PatternAssertions.assertClass(JSON.class).isAWellDefinedUtilityClass();
+	}
+
 }

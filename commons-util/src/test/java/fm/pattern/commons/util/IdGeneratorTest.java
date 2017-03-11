@@ -16,21 +16,11 @@
 
 package fm.pattern.commons.util;
 
-import static org.apache.commons.lang3.StringUtils.isAlpha;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.StrictAssertions.assertThat;
 
 import org.junit.Test;
 
-import fm.pattern.commons.util.IdGenerator;
-
 public class IdGeneratorTest {
-
-	@Test
-	public void generatedIdsShouldAlwaysStartWithACharacter() {
-		for (int i = 0; i < 1000; i++) {
-			assertThat(isAlpha(String.valueOf(IdGenerator.generateId().charAt(0)))).isTrue();
-		}
-	}
 
 	@Test
 	public void shouldBeAbleToGenerateAnIdWithAPrefix() {
@@ -62,12 +52,17 @@ public class IdGeneratorTest {
 		assertThat(id.startsWith("cus_"));
 		assertThat(id.length()).isEqualTo(24);
 	}
-	
+
 	@Test
 	public void shouldGenerateAnIdWithTheSpecifiedLengthIfThePrefixIsNullOrEmpty() {
 		assertThat(IdGenerator.generateId(null, 20).length()).isEqualTo(20);
 		assertThat(IdGenerator.generateId("", 20).length()).isEqualTo(20);
 		assertThat(IdGenerator.generateId("  ", 20).length()).isEqualTo(20);
 	}
-	
+
+	@Test
+	public void theIdGeneratorShouldBeAWellDefinedUtilityClass() {
+		PatternAssertions.assertClass(IdGenerator.class).isAWellDefinedUtilityClass();
+	}
+
 }

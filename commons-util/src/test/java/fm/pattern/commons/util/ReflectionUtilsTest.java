@@ -125,4 +125,9 @@ public class ReflectionUtilsTest {
 		assertThat(model.getModel().getMinutes()).isNull();
 	}
 
+	@Test
+	public void theClassShouldBeAWellDefinedUtilityClass() {
+		PatternAssertions.assertClass(ReflectionUtils.class).isAWellDefinedUtilityClass();
+	}
+
 }
