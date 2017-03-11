@@ -7,17 +7,17 @@ import java.lang.reflect.Modifier;
 import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.Assertions;
 
-public class ResultAssertions extends AbstractAssert<ResultAssertions, Class<?>> {
+public class UtilityClassAssertions extends AbstractAssert<UtilityClassAssertions, Class<?>> {
 
-	public ResultAssertions(Class<?> clazz) {
-		super(clazz, ResultAssertions.class);
+	public UtilityClassAssertions(Class<?> clazz) {
+		super(clazz, UtilityClassAssertions.class);
 	}
 
-	public static ResultAssertions assertThat(Class<?> clazz) {
-		return new ResultAssertions(clazz);
+	public static UtilityClassAssertions assertThat(Class<?> clazz) {
+		return new UtilityClassAssertions(clazz);
 	}
 
-	public ResultAssertions isAWellDefinedUtilityClass() {
+	public UtilityClassAssertions isAWellDefinedUtilityClass() {
 		Assertions.assertThat(Modifier.isFinal(actual.getModifiers())).describedAs("A utility class should be marked as final.").isTrue();
 		Assertions.assertThat(actual.getDeclaredConstructors().length).describedAs("A utility class should only have one constructor, but this class has " + actual.getDeclaredConstructors().length).isEqualTo(1);
 
