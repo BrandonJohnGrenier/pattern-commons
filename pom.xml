@@ -3,7 +3,7 @@
    <name>Pattern Commons</name>
    <modelVersion>4.0.0</modelVersion>
 
-   <groupId>fm.pattern.commons</groupId>
+   <groupId>fm.pattern</groupId>
    <artifactId>pattern-commons</artifactId>
    <version>1.0.1-SNAPSHOT</version>
    <packaging>pom</packaging>
