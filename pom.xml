@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-   <name>Pattern Commons</name>
+   <name>Commons</name>
    <modelVersion>4.0.0</modelVersion>
 
    <groupId>fm.pattern</groupId>
-   <artifactId>pattern-commons</artifactId>
-   <version>1.0.2-SNAPSHOT</version>
+   <artifactId>commons</artifactId>
+   <version>1.0.0-SNAPSHOT</version>
    <packaging>pom</packaging>
 
    <properties>
@@ -26,7 +26,7 @@
    </licenses>
 
    <scm>
-      <developerConnection>scm:git:https://github.com/BrandonJohnGrenier/pattern-commons.git</developerConnection>
+      <developerConnection>scm:git:https://github.com/PatternFM/commons.git</developerConnection>
       <tag>HEAD</tag>
    </scm>
 
@@ -89,7 +89,7 @@
             <artifactId>aws-maven</artifactId>
             <version>5.0.0.RELEASE</version>
          </extension>
-         
+
          <extension>
             <groupId>org.kuali.maven.wagons</groupId>
             <artifactId>maven-s3-wagon</artifactId>
@@ -105,7 +105,7 @@
             <configuration>
                <goals>deploy</goals>
                <autoversionsubmodules>true</autoversionsubmodules>
-               <tagNameFormat>pattern-commons-@{project.version}</tagNameFormat>
+               <tagNameFormat>commons-@{project.version}</tagNameFormat>
             </configuration>
             <dependencies>
                <dependency>

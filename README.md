@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/BrandonJohnGrenier/pattern-commons.svg?branch=master)](https://travis-ci.org/BrandonJohnGrenier/pattern-commons)
-[![Coverage Status](https://coveralls.io/repos/github/BrandonJohnGrenier/pattern-commons/badge.svg?branch=master)](https://coveralls.io/github/BrandonJohnGrenier/pattern-commons?branch=master)  
+[![Build Status](https://travis-ci.org/PatternFM/commons.svg?branch=master)](https://travis-ci.org/PatternFM/commons)
+[![Coverage Status](https://coveralls.io/repos/github/PatternFM/commons/badge.svg?branch=master)](https://coveralls.io/github/PatternFM/commons?branch=master)  
 
 # Introduction
 
