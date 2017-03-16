@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <name>Commons</name>
+   <description>A minimal library for common functions including identity generation, JSON parsing and reflection.</description>
    <modelVersion>4.0.0</modelVersion>
 
    <groupId>fm.pattern</groupId>
@@ -25,8 +26,19 @@
       </license>
    </licenses>
 
+   <developers>
+      <developer>
+        <id>brandon.john.grenier</id>
+        <name>Brandon Grenier</name>
+      </developer>
+   </developers>
+
+
+   <url>https://github.com/PatternFM/commons"</url>
+
    <scm>
       <developerConnection>scm:git:https://github.com/PatternFM/commons.git</developerConnection>
+      <url>scm:git:https://github.com/PatternFM/commons.git</url>
       <tag>commons-1.0.1</tag>
    </scm>
 
