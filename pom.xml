@@ -39,7 +39,7 @@
    <scm>
       <developerConnection>scm:git:https://github.com/PatternFM/commons.git</developerConnection>
       <url>scm:git:https://github.com/PatternFM/commons.git</url>
-      <tag>commons-1.0.1</tag>
+      <tag>commons-1.0.2</tag>
    </scm>
 
    <distributionManagement>
