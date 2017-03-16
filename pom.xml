@@ -6,7 +6,7 @@
 
    <groupId>fm.pattern</groupId>
    <artifactId>commons</artifactId>
-   <version>1.0.7-SNAPSHOT</version>
+   <version>1.0.7</version>
    <modelVersion>4.0.0</modelVersion>
    <packaging>pom</packaging>
 
@@ -36,7 +36,7 @@
    <scm>
       <developerConnection>scm:git:https://github.com/PatternFM/commons.git</developerConnection>
       <url>scm:git:https://github.com/PatternFM/commons.git</url>
-      <tag>commons-1.0.2</tag>
+      <tag>commons-1.0.7</tag>
    </scm>
 
    <distributionManagement>
