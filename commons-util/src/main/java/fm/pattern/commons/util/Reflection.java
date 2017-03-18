@@ -25,10 +25,28 @@ public final class Reflection {
 
     }
 
+    /**
+     * Returns the specified <em>property</em> value on the given <em>instance</em>, returned as the specified
+     * <em>type</em>.
+     * 
+     * @param instance The object instance.
+     * @param property The property to get.
+     * @param type The return type to use.
+     * 
+     * @return An Object representing the property value, or null if no property value exists.
+     */
     public static <T> T get(Object instance, String property, Class<T> type) {
         return (T) get(instance, property);
     }
 
+    /**
+     * Returns the specified <em>property</em> value on the given <em>instance</em>.
+     * 
+     * @param instance The object instance.
+     * @param property The property to get.
+     * 
+     * @return An Object representing the property value, or null if no property value exists.
+     */
     public static Object get(Object instance, String property) {
         try {
             return PropertyUtils.getProperty(instance, property);
@@ -38,6 +56,15 @@ public final class Reflection {
         }
     }
 
+    /**
+     * Sets the specified <em>property</em> value on the given <em>instance</em>.
+     * 
+     * @param instance The object instance.
+     * @param property The property to set.
+     * @param value The property value.
+     * 
+     * @return The updated instance if the property was set correctly, null otherwise.
+     */
     public static <T> T set(T instance, String property, Object value) {
         try {
             PropertyUtils.setProperty(instance, property, value);

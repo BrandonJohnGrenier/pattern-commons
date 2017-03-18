@@ -48,7 +48,7 @@ The JSON API exposes a minimal, JavaScript-inspired interface on top of the exce
 The stringify() method serializes a Java value into a JSON string.
 ```java
 Person person = new Person("John", "Smith");
-JSON.stringify(person) => {"id":"ljHmy6s3Alr7Sxfasjz5KsF","firstName":"John","lastName":"Smith"}
+JSON.stringify(person) => {"firstName":"John","lastName":"Smith"}
 ```
 This method will throw a *JsonParsingException* at runtime if the Java value cannot be serialized.
 
@@ -83,7 +83,7 @@ System.out.pritnln(person.getLastName()); => "Smith"
 This method will throw a *JsonParsingException* at runtime if the JSON string cannot be deserialized.
 
 ## Reflection
-The Reflection API provides a simple map-like interface on top of the Java Reflection API for getting and setting property values on Java objects.
+The Reflection API provides a simple map-like interface on top of the Java Reflection API for getting and setting property values on Java objects. We'll run through a number of examples getting and setting properties using the following object model:
 
 ```java
 public class Entity {
@@ -120,18 +120,20 @@ person.setAddress(address);
 ```
 
 #### Getting Values
+The get API returns a property value for a given property name. If no such property value exists, a *null* value is returned. Property values returned from the get API will be of type Object by default, but you can specify the return type explicitly to override the default behaviour.
+
 
 ```java
-// Retrieves the 'id' property from the Person Entity superclass.
-Reflection.get(person, "id"); => "abcd12345"
-
 // Retrieves the 'name' property from the Person object.
 Reflection.get(person, "name"); => "Sally"
+
+// Retrieves the 'id' property from the Person object superclass.
+Reflection.get(person, "id"); => "abcd12345"
 
 // Retrieves the 'suburb' property from the composed Address object.
 Reflection.get(person, "address.suburb"); => "Bondi"
 
-// Retrieves the 'id' property from the composed Address Entity superclass.
+// Retrieves the 'id' property from the composed Address object superclass.
 Reflection.get(person, "address.id"); => "1234abcd"
 
 // Retrieves the 'address' property from the Person object, returned as an Address through an explicit cast.
@@ -142,19 +144,24 @@ Address address = Reflection.get(person, "address", Address.class);
 ```
 
 #### Setting Values
+The set API sets a property value for a given property name. An updated object instance is returned when a property value is set successfully, and null otherwise.
 
 ```java
-// Sets the 'id' property from the Person Entity superclass.
-Reflection.set(person, "id", "11111");
-
-// Sets the 'name' property from the Person object.
+// Sets the 'name' property on the Person object.
 Reflection.set(person, "name", "Suzan");
 
-// Sets the 'suburb' property from the composed Address object.
-Reflection.get(person, "address.suburb", "St. Kilda");
+// Sets the 'id' property on the Person object superclass.
+Reflection.set(person, "id", "11111");
 
-// Sets the 'id' property from the composed Address Entity superclass.
-Reflection.get(person, "address.id", "22222");
+// Sets the 'suburb' property on the composed Address object.
+Reflection.set(person, "address.suburb", "St. Kilda");
+
+// Sets the 'id' property on the composed Address object superclass.
+Reflection.set(person, "address.id", "22222");
+
+// Setting an invalid property value will return a null instance. Otherwise, the updated instance is returned.
+Person updated = Reflect.set(person, "invalid", "12345");
+System.out.println(updated) => null
 ```
 
 
