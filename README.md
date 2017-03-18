@@ -50,8 +50,9 @@ The stringify() method serializes a Java value into a JSON string.
 Account account = ...;
 JSON.stringify(account) => {"id":"acc_ljHmy6Sxfasjz5KsFsXox","created":1489819061925,"updated":1489819061925,"firstName":"John","lastName":"Smith"}
 ```
+This method will throw a JsonParsingException if the Java value cannot be serialized.
 
-If you override your domain model toString() implementation to generate JSON it becomes simple to produce well formatted JSON logs, and really useful when debugging and troubleshooting. 
+***Tip:*** If you override your domain model toString() implementation to generate JSON it becomes simple to produce well formatted JSON logs, and really useful when debugging and troubleshooting. 
 
 ```java
 public class Account {
@@ -79,6 +80,8 @@ Account account = JSON.parse("{\"firstName\":\"John\",\"lastName\":\"Smith\"}", 
 System.out.pritnln(account.getFirstName()); => "John"
 System.out.pritnln(account.getLastName()); => "Smith"
 ```
+This method will throw a JsonParsingException if the JSON string cannot be deserialized.
+
 
 ## Building from Source
 
