@@ -42,13 +42,14 @@ IdGenerator.generateId("txn", 30) => 'txn_6CKbkcPQgk8OCONGu82Tv2rv664P2H'
 
 ## JSON Parsing
 
-The JSON interface provides a simple API over the [Jackson](https://github.com/FasterXML/jackson) library to serialize and deserialize Java objects.
+The JSON interface exposes a simple API on top of the [Jackson JSON library](https://github.com/FasterXML/jackson) for Java-JSON marshelling.
 
 ```
 Account account = ...;
 JSON.stringify(account) => {"id":"acc_ljHmy6Sxfasjz5KsFsXox","created":1489819061925,"updated":1489819061925,"firstName":"John","lastName":"Smith"}
 ```
 
+If you override the default toString() implementation with the one below, 
 ```
 @Override
 public String toString() {
