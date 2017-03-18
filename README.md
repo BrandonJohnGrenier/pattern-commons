@@ -44,13 +44,13 @@ IdGenerator.generateId("txn", 30) => 'txn_6CKbkcPQgk8OCONGu82Tv2rv664P2H'
 
 The JSON interface exposes a simple API on top of the [Jackson JSON library](https://github.com/FasterXML/jackson) for JSON parsing.
 
-The stringify() method serializes a Java object into a JSON string.
+The stringify() method converts a Java object into a JSON string.
 ```
 Account account = ...;
 JSON.stringify(account) => {"id":"acc_ljHmy6Sxfasjz5KsFsXox","created":1489819061925,"updated":1489819061925,"firstName":"John","lastName":"Smith"}
 ```
 
-If you override your domain model toString() implementation to generate JSON output it becomes simple to produce formatted JSON log output, and really useful when debugging and troubleshooting. 
+If you override your domain model toString() implementation to generate JSON it becomes simple to produce well formatted JSON logs, and really useful when debugging and troubleshooting. 
 
 ```java
 public class Account {
@@ -61,8 +61,11 @@ public class Account {
 }
 
 Account account = new Account();
+
+// Logs a well formatted JSON string with the account's current state.
 logger.info(account);
 
+// Prints a well formatted JSON string with the account's current state instead of it's hash code.
 System.out.pritnln(account);
 
 ```
