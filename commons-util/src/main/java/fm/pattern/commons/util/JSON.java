@@ -16,37 +16,32 @@
 
 package fm.pattern.commons.util;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public final class JSON {
 
-	private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
-	static {
-		objectMapper.setSerializationInclusion(Include.NON_NULL);
-	}
+    private JSON() {
 
-	private JSON() {
+    }
 
-	}
+    public static String stringify(Object object) {
+        try {
+            return objectMapper.writeValueAsString(object);
+        }
+        catch (Exception e) {
+            throw new JsonParsingException(e);
+        }
+    }
 
-	public static <T> T objectify(String source, Class<T> type) {
-		try {
-			return objectMapper.readValue(source, type);
-		}
-		catch (Exception e) {
-			throw new JsonParsingException(e);
-		}
-	}
-
-	public static String stringify(Object object) {
-		try {
-			return objectMapper.writeValueAsString(object);
-		}
-		catch (Exception e) {
-			throw new JsonParsingException(e);
-		}
-	}
+    public static <T> T parse(String source, Class<T> type) {
+        try {
+            return objectMapper.readValue(source, type);
+        }
+        catch (Exception e) {
+            throw new JsonParsingException(e);
+        }
+    }
 
 }

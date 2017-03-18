@@ -18,14 +18,14 @@ To get started, add the following dependency to your depedency list:
 
 The id generator uses a cryptographically strong random number generator to produce sequences of alphanumeric strings that can be used as unique identifiers.
 
-By default, the id generator will produce a 25 character length alphanumeric string, with a mix of uppercase and lowercase characters:
+By default, the id generator will produce a 25 character length alphanumeric string, with a mix of uppercase and lowercase characters:  
 ```
 IdGenerator.generateId() => 'jDWatQsPtRNOMhYAnVWUDF3LE'
 ```
 
 You can specify the length of the id to generate by provding a length argument:
 ```
-IdGenerator.generateId(5) => 'pciIi'
+IdGenerator.generateId(5) => 'pciIi'   
 IdGenerator.generateId(50) => 'Sf3hcRp8yIveqZbkx3AMTpomZzbDVHfxyOIyGzjZCaPaGdc0NC'
 ```
 
@@ -36,7 +36,7 @@ IdGenerator.generateId("txn") => 'txn_Lh2LRvtK4euznW686ScmNNkw4'
 
 You can specify a prefix and the length of the id to generate:
 ```
-IdGenerator.generateId("txn", 10) => 'txn_qGoxTSqc30'
+IdGenerator.generateId("txn", 10) => 'txn_qGoxTSqc30'   
 IdGenerator.generateId("txn", 30) => 'txn_6CKbkcPQgk8OCONGu82Tv2rv664P2H'
 ```
 
@@ -44,7 +44,7 @@ IdGenerator.generateId("txn", 30) => 'txn_6CKbkcPQgk8OCONGu82Tv2rv664P2H'
 
 The JSON interface exposes a simple API on top of the [Jackson JSON library](https://github.com/FasterXML/jackson) for JSON parsing.
 
-The stringify() method converts a Java object into a JSON string.
+The stringify() method serializes a Java value into a JSON string.
 ```
 Account account = ...;
 JSON.stringify(account) => {"id":"acc_ljHmy6Sxfasjz5KsFsXox","created":1489819061925,"updated":1489819061925,"firstName":"John","lastName":"Smith"}
@@ -68,6 +68,11 @@ logger.info(account);
 // Prints a well formatted JSON string with the account's current state instead of it's hash code.
 System.out.pritnln(account);
 
+```
+
+The parse() method deserializes a JSON string into a Java value.
+```
+Account account = JSON.parse("{\"firstName\":\"John\",\"lastName\":\"Smith\"}", Account.class);
 ```
 
 ## Building from Source

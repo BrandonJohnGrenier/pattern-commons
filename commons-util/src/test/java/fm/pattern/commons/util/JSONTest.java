@@ -39,7 +39,7 @@ public class JSONTest {
 
 	@Test
 	public void shouldBeAbleToObjectifyAString() {
-		SimpleModel model = JSON.objectify(JSON_STRING, SimpleModel.class);
+		SimpleModel model = JSON.parse(JSON_STRING, SimpleModel.class);
 		assertThat(model.getFirst()).isEqualTo("first");
 		assertThat(model.getLast()).isEqualTo("last");
 		assertThat(model.getTotal()).isEqualTo(55);
@@ -47,7 +47,7 @@ public class JSONTest {
 
 	@Test(expected = JsonParsingException.class)
 	public void shouldThrowAParsingExceptionWhenAJSONStringCannotBeParsed() {
-		JSON.objectify("no{}", SimpleModel.class);
+		JSON.parse("no{}", SimpleModel.class);
 	}
 
 	@Test
