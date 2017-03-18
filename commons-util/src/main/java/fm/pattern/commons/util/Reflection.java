@@ -28,7 +28,7 @@ public final class Reflection {
 
     }
 
-    public static Object getValue(Object instance, String property) {
+    public static Object get(Object instance, String property) {
         try {
             return PropertyUtils.getProperty(instance, property);
         }
@@ -38,7 +38,18 @@ public final class Reflection {
         }
     }
 
-    public static void setValue(Object instance, String property, Object value) {
+    @SuppressWarnings("unchecked")
+    public static <T> T get(Object instance, String property, Class<T> type) {
+        try {
+            return (T) PropertyUtils.getProperty(instance, property);
+        }
+        catch (Exception e) {
+            log.warn("Failed to get property value '" + property + "':", e);
+            return null;
+        }
+    }
+    
+    public static void set(Object instance, String property, Object value) {
         try {
             PropertyUtils.setProperty(instance, property, value);
         }

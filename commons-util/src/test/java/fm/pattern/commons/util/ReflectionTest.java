@@ -29,15 +29,15 @@ public class ReflectionTest {
     public void shouldBeAbleToReturnAPropertyValueFromAnObject() {
         SimpleModel model = new SimpleModel("value", "value", 200);
 
-        assertThat(Reflection.getValue(model, "first")).isEqualTo("value");
-        assertThat(Reflection.getValue(model, "last")).isEqualTo("value");
-        assertThat(Reflection.getValue(model, "total")).isEqualTo(200);
+        assertThat(Reflection.get(model, "first")).isEqualTo("value");
+        assertThat(Reflection.get(model, "last")).isEqualTo("value");
+        assertThat(Reflection.get(model, "total")).isEqualTo(200);
     }
 
     @Test
     public void shouldNotBeAbleToReturnAPropertyValueFromAnObjectWhenThePropertyDoesNotExist() {
         SimpleModel model = new SimpleModel("value", "value", 200);
-        assertThat(Reflection.getValue(model, "invalid")).isNull();
+        assertThat(Reflection.get(model, "invalid")).isNull();
     }
 
     @Test
@@ -46,8 +46,8 @@ public class ReflectionTest {
         model.setKey("mykey");
         model.setValue("myvalue");
 
-        assertThat(Reflection.getValue(model, "key")).isEqualTo("mykey");
-        assertThat(Reflection.getValue(model, "value")).isEqualTo("myvalue");
+        assertThat(Reflection.get(model, "key")).isEqualTo("mykey");
+        assertThat(Reflection.get(model, "value")).isEqualTo("myvalue");
     }
 
     @Test
@@ -61,19 +61,52 @@ public class ReflectionTest {
         SimpleModel model = new SimpleModel("first", "last", 200);
         model.setModel(composed);
 
-        assertThat(Reflection.getValue(model, "model.hours")).isEqualTo(10);
-        assertThat(Reflection.getValue(model, "model.minutes")).isEqualTo(40);
-        assertThat(Reflection.getValue(model, "model.key")).isEqualTo("some key");
-        assertThat(Reflection.getValue(model, "model.value")).isEqualTo("some value");
+        assertThat(Reflection.get(model, "model.hours")).isEqualTo(10);
+        assertThat(Reflection.get(model, "model.minutes")).isEqualTo(40);
+        assertThat(Reflection.get(model, "model.key")).isEqualTo("some key");
+        assertThat(Reflection.get(model, "model.value")).isEqualTo("some value");
     }
 
+    @Test
+    public void shouldBeAbleToExplicityRequestTheReturnTypeWhenGettingAValue() {
+        ComposedModel composed = new ComposedModel();
+        composed.setHours(10);
+        composed.setMinutes(40);
+        composed.setKey("some key");
+        composed.setValue("some value");
+
+        SimpleModel model = new SimpleModel("first", "last", 200);
+        model.setModel(composed);
+
+        ComposedModel reflected = Reflection.get(model, "model", ComposedModel.class);
+        assertThat(reflected.getHours()).isEqualTo(10);
+        assertThat(reflected.getMinutes()).isEqualTo(40);
+        assertThat(reflected.getKey()).isEqualTo("some key");
+        assertThat(reflected.getValue()).isEqualTo("some value");
+    }
+
+    @Test
+    public void shouldReturnNullBWhenThePropertyToGetIsNotPresent() {
+        ComposedModel composed = new ComposedModel();
+        composed.setHours(10);
+        composed.setMinutes(40);
+        composed.setKey("some key");
+        composed.setValue("some value");
+
+        SimpleModel model = new SimpleModel("first", "last", 200);
+        model.setModel(composed);
+
+        ComposedModel reflected = Reflection.get(model, "invalidprop", ComposedModel.class);
+        assertThat(reflected).isNull();
+    }
+    
     @Test
     public void shouldBeAbleToSetThePropertyValueOfTheTargetObject() {
         SimpleModel model = new SimpleModel("value", "value", 200);
 
-        Reflection.setValue(model, "first", "another value");
-        Reflection.setValue(model, "last", "another value");
-        Reflection.setValue(model, "total", 500);
+        Reflection.set(model, "first", "another value");
+        Reflection.set(model, "last", "another value");
+        Reflection.set(model, "total", 500);
 
         assertThat(model.getFirst()).isEqualTo("another value");
         assertThat(model.getLast()).isEqualTo("another value");
@@ -84,8 +117,8 @@ public class ReflectionTest {
     public void shouldBeAbleToSetThePropertyValueOnASuperclassOfTheTargetObject() {
         SimpleModel model = new SimpleModel("value", "value", 200);
 
-        Reflection.setValue(model, "key", "some key");
-        Reflection.setValue(model, "value", "some value");
+        Reflection.set(model, "key", "some key");
+        Reflection.set(model, "value", "some value");
 
         assertThat(model.getKey()).isEqualTo("some key");
         assertThat(model.getValue()).isEqualTo("some value");
@@ -98,10 +131,10 @@ public class ReflectionTest {
         SimpleModel model = new SimpleModel("value", "value", 200);
         model.setModel(composed);
 
-        Reflection.setValue(model, "model.minutes", 20);
-        Reflection.setValue(model, "model.hours", 20);
-        Reflection.setValue(model, "model.key", "some key");
-        Reflection.setValue(model, "model.value", "some value");
+        Reflection.set(model, "model.minutes", 20);
+        Reflection.set(model, "model.hours", 20);
+        Reflection.set(model, "model.key", "some key");
+        Reflection.set(model, "model.value", "some value");
 
         assertThat(model.getModel().getHours()).isEqualTo(20);
         assertThat(model.getModel().getMinutes()).isEqualTo(20);
@@ -115,8 +148,8 @@ public class ReflectionTest {
         SimpleModel model = new SimpleModel("value", "value", 200);
         model.setModel(composed);
 
-        Reflection.setValue(model, "mdel.minutes", 20);
-        Reflection.setValue(model, "moel.ours", 20);
+        Reflection.set(model, "mdel.minutes", 20);
+        Reflection.set(model, "moel.ours", 20);
 
         assertThat(model.getModel().getHours()).isEqualTo(null);
         assertThat(model.getModel().getMinutes()).isEqualTo(null);
@@ -126,8 +159,8 @@ public class ReflectionTest {
     public void shouldNotBeAbleToSetThePropertyValueOnAnObjectWhenTheObjectIsNull() {
         SimpleModel model = new SimpleModel("value", "value", 200);
 
-        Reflection.setValue(null, "key", "some key");
-        Reflection.setValue(model, null, "some value");
+        Reflection.set(null, "key", "some key");
+        Reflection.set(model, null, "some value");
 
         assertThat(model.getKey()).isEqualTo(null);
         assertThat(model.getValue()).isEqualTo(null);
