@@ -3,9 +3,9 @@
 
 ## Introduction
 
-Pattern Commons minimal library for common functions including identity generation, JSON parsing and reflection.
+Pattern Commons is a minimal library for common functions including identity generation, JSON parsing and reflection.
 
-To get started, add the following dependency to your depedency list
+To get started, add the following dependency to your depedency list:
 ```xml
 <dependency>
     <groupId>fm.pattern</groupId>
@@ -13,6 +13,25 @@ To get started, add the following dependency to your depedency list
     <version>1.0.7</version>
 </dependency>
 ```
+
+## Identity Generation
+
+By default, the id generator will produce a 25 character length alphanumeric string, with a mix of uppercase and lowercase characters:
+```
+  IdGenerator.generateId() => 'jDWatQsPtRNOMhYAnVWUDF3LE'
+```
+
+You can specify the length of the id to generate by provding a length argument:
+```
+  IdGenerator.generateId(5) => 'pciIi'
+  IdGenerator.generateId(50) => 'Sf3hcRp8yIveqZbkx3AMTpomZzbDVHfxyOIyGzjZCaPaGdc0NC'
+```
+
+You can add a prefix to generated ids. The id generator will add an underscore between the prefix and the alphanumeric sequence.
+```
+  IdGenerator.generateId("txn") => 'txn_jDWatQsPtRNOMhYAnVWUDF3LE'
+```
+
 
 ## Building from Source
 
