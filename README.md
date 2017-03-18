@@ -3,7 +3,9 @@
 
 ## Introduction
 
-Add the following dependency to your Maven or Ivy depedency list
+Pattern Commons minimal library for common functions including identity generation, JSON parsing and reflection.
+
+To get started, add the following dependency to your depedency list
 ```xml
 <dependency>
     <groupId>fm.pattern</groupId>
@@ -14,7 +16,7 @@ Add the following dependency to your Maven or Ivy depedency list
 
 ## Building from Source
 
-Both JDK 8 and Maven 3 are required to build Pattern Commons from source. With these prerequisites in place you can build via:
+Both JDK 8 and Maven 3 are required to build Pattern Commons from source. With these prerequisites in place you can build Pattern Commons by:
 ```
 git clone https://github.com/PatternFM/commons.git
 cd commons
@@ -23,7 +25,7 @@ mvn clean install
 
 ## Continuous Integration
 
-The Continuous Integration service for the project is hosted on https://travis-ci.org/PatternFM/tokamak
+The Continuous Integration service for the project is hosted on [Travis](https://travis-ci.org/PatternFM/commons) 
 
 
 ## Licensing
