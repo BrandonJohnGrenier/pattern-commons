@@ -114,6 +114,22 @@ public class ReflectionTest {
     }
 
     @Test
+    public void shouldReturnTheUpdatedModelAfterAPropertyIsSet() {
+        SimpleModel model = new SimpleModel("value", "value", 200);
+
+        SimpleModel updated = Reflection.set(model, "first", "another value");
+        assertThat(updated.getFirst()).isEqualTo("another value");
+    }
+    
+    @Test
+    public void shouldReturnNullWhenAPropertyCannotBeSet() {
+        SimpleModel model = new SimpleModel("value", "value", 200);
+
+        SimpleModel updated = Reflection.set(model, "invalid", "another value");
+        assertThat(updated).isNull();
+    }
+    
+    @Test
     public void shouldBeAbleToSetThePropertyValueOnASuperclassOfTheTargetObject() {
         SimpleModel model = new SimpleModel("value", "value", 200);
 

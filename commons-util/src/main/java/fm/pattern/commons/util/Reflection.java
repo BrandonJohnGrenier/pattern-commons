@@ -17,15 +17,16 @@
 package fm.pattern.commons.util;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@SuppressWarnings("unchecked")
 public final class Reflection {
-
-    private static final Logger log = LoggerFactory.getLogger(Reflection.class);
 
     private Reflection() {
 
+    }
+
+    public static <T> T get(Object instance, String property, Class<T> type) {
+        return (T) get(instance, property);
     }
 
     public static Object get(Object instance, String property) {
@@ -33,28 +34,17 @@ public final class Reflection {
             return PropertyUtils.getProperty(instance, property);
         }
         catch (Exception e) {
-            log.warn("Failed to get property value '" + property + "':", e);
             return null;
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public static <T> T get(Object instance, String property, Class<T> type) {
-        try {
-            return (T) PropertyUtils.getProperty(instance, property);
-        }
-        catch (Exception e) {
-            log.warn("Failed to get property value '" + property + "':", e);
-            return null;
-        }
-    }
-    
-    public static void set(Object instance, String property, Object value) {
+    public static <T> T set(T instance, String property, Object value) {
         try {
             PropertyUtils.setProperty(instance, property, value);
+            return instance;
         }
         catch (Exception e) {
-            log.warn("Failed to set property value '" + property + "':", e);
+            return null;
         }
     }
 
