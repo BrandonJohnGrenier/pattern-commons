@@ -10,7 +10,7 @@ To get started, add the following dependency to your depedency list:
 <dependency>
     <groupId>fm.pattern</groupId>
     <artifactId>commons-util</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
 </dependency>
 ```
 
@@ -83,7 +83,7 @@ System.out.pritnln(person.getLastName()); => "Smith"
 This method will throw a *JsonParsingException* at runtime if the JSON string cannot be deserialized.
 
 ## Reflection
-The Reflection API provides a simple map-like interface on top of the Java Reflection API for getting and setting property values on Java objects. We'll run through a number of examples getting and setting properties using the following object model:
+The Reflection API provides a simple map-like interface on top of the Java Reflection API for getting and setting property values on Java objects. We'll run through a number of examples  using the following object model:
 
 ```java
 public class Entity {
