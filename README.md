@@ -50,7 +50,7 @@ The stringify() method serializes a Java value into a JSON string.
 Person person = new Person("John", "Smith");
 JSON.stringify(person) => {"id":"ljHmy6s3Alr7Sxfasjz5KsF","firstName":"John","lastName":"Smith"}
 ```
-This method will throw a runtime **JsonParsingException** if the Java value cannot be serialized.
+This method will throw a *JsonParsingException* at runtime if the Java value cannot be serialized.
 
 ***Tip:*** If you override the toString() implementation to generate JSON it becomes simple to produce well formatted JSON logs, and really useful when debugging and troubleshooting. 
 
@@ -80,9 +80,18 @@ Person person = JSON.parse("{\"firstName\":\"John\",\"lastName\":\"Smith\"}", Pe
 System.out.pritnln(person.getFirstName()); => "John"
 System.out.pritnln(person.getLastName()); => "Smith"
 ```
-This method will throw a runtime **JsonParsingException** if the JSON string cannot be deserialized.
+This method will throw a *JsonParsingException* at runtime if the JSON string cannot be deserialized.
 
 ## Reflection
+The Reflection API provides a consistent set of interfaces for both getting and setting properties on Java objects.
+
+```java
+Person person = new Person();
+...
+Reflection.getValue(person, "name");
+Reflection.getValue(person, "address.suburb");
+Reflection.getValue(person, "id");
+```
 
 # Building from Source
 
