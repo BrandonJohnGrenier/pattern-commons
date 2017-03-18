@@ -44,6 +44,7 @@ IdGenerator.generateId("txn", 30) => 'txn_6CKbkcPQgk8OCONGu82Tv2rv664P2H'
 
 The JSON interface exposes a simple API on top of the [Jackson JSON library](https://github.com/FasterXML/jackson) for JSON parsing.
 
+### Java -> JSON
 The stringify() method serializes a Java value into a JSON string.
 ```
 Account account = ...;
@@ -70,6 +71,7 @@ System.out.pritnln(account);
 
 ```
 
+### JSON -> Java
 The parse() method deserializes a JSON string into a Java value.
 ```
 Account account = JSON.parse("{\"firstName\":\"John\",\"lastName\":\"Smith\"}", Account.class);
