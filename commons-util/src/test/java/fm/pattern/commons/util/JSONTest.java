@@ -24,7 +24,7 @@ import fm.pattern.commons.util.model.SimpleModel;
 
 public class JSONTest {
 
-	private static final String JSON_STRING = "{\"first\":\"first\",\"last\":\"last\",\"total\":55}";
+	private static final String JSON_STRING = "{\"key\":null,\"value\":null,\"first\":\"first\",\"last\":\"last\",\"total\":55,\"model\":null}";
 
 	@Test
 	public void shouldBeAbleToStringifyAnObject() {

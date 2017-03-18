@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/PatternFM/commons.svg?branch=master)](https://travis-ci.org/PatternFM/commons)
 [![Coverage Status](https://coveralls.io/repos/github/PatternFM/commons/badge.svg?branch=master)](https://coveralls.io/github/PatternFM/commons?branch=master)  
 
-## Introduction
+# Introduction
 
 Pattern Commons is a minimal library for common functions including identity generation, JSON parsing and reflection.
 
@@ -82,8 +82,9 @@ System.out.pritnln(person.getLastName()); => "Smith"
 ```
 This method will throw a JsonParsingException if the JSON string cannot be deserialized.
 
+## Reflection
 
-## Building from Source
+# Building from Source
 
 Both JDK 8 and Maven 3 are required to build Pattern Commons from source. With these prerequisites in place you can build Pattern Commons by:
 ```
@@ -92,11 +93,11 @@ cd commons
 mvn clean install
 ```
 
-## Continuous Integration
+# Continuous Integration
 
 The Continuous Integration service for the project is hosted on [Travis](https://travis-ci.org/PatternFM/commons) 
 
 
-## Licensing
+# Licensing
 
 This software is provided and distributed under the Apache Software License 2.0. Refer to LICENSE.txt for more information.
