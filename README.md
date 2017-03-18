@@ -10,7 +10,7 @@ To get started, add the following dependency to your depedency list:
 <dependency>
     <groupId>fm.pattern</groupId>
     <artifactId>commons-util</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 </dependency>
 ```
 
@@ -47,8 +47,8 @@ The JSON interface exposes a simple API on top of the [Jackson JSON library](htt
 #### Converting Java to JSON
 The stringify() method serializes a Java value into a JSON string.
 ```
-Account account = ...;
-JSON.stringify(account) => {"id":"acc_ljHmy6Sxfasjz5KsFsXox","created":1489819061925,"updated":1489819061925,"firstName":"John","lastName":"Smith"}
+Person person = new Person("John", "Smith");
+JSON.stringify(person) => {"id":"ljHmy6s3Alr7Sxfasjz5KsF","firstName":"John","lastName":"Smith"}
 ```
 This method will throw a JsonParsingException if the Java value cannot be serialized.
 
@@ -75,10 +75,10 @@ System.out.pritnln(account);
 #### Converting JSON to Java
 The parse() method deserializes a JSON string into a Java value.
 ```
-Account account = JSON.parse("{\"firstName\":\"John\",\"lastName\":\"Smith\"}", Account.class);
+Person person = JSON.parse("{\"firstName\":\"John\",\"lastName\":\"Smith\"}", Person.class);
 
-System.out.pritnln(account.getFirstName()); => "John"
-System.out.pritnln(account.getLastName()); => "Smith"
+System.out.pritnln(person.getFirstName()); => "John"
+System.out.pritnln(person.getLastName()); => "Smith"
 ```
 This method will throw a JsonParsingException if the JSON string cannot be deserialized.
 
