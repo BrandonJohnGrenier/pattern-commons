@@ -20,25 +20,34 @@ The id generator uses a cryptographically strong random number generator to prod
 
 By default, the id generator will produce a 25 character length alphanumeric string, with a mix of uppercase and lowercase characters:
 ```
-  IdGenerator.generateId() => 'jDWatQsPtRNOMhYAnVWUDF3LE'
+IdGenerator.generateId() => 'jDWatQsPtRNOMhYAnVWUDF3LE'
 ```
 
 You can specify the length of the id to generate by provding a length argument:
 ```
-  IdGenerator.generateId(5) => 'pciIi'
-  IdGenerator.generateId(50) => 'Sf3hcRp8yIveqZbkx3AMTpomZzbDVHfxyOIyGzjZCaPaGdc0NC'
+IdGenerator.generateId(5) => 'pciIi'
+IdGenerator.generateId(50) => 'Sf3hcRp8yIveqZbkx3AMTpomZzbDVHfxyOIyGzjZCaPaGdc0NC'
 ```
 
 You can add a prefix to generated ids. The id generator will add an underscore between the specified prefix and the (default 25 character length) alphanumeric sequence.
 ```
-  IdGenerator.generateId("txn") => 'txn_Lh2LRvtK4euznW686ScmNNkw4'
+IdGenerator.generateId("txn") => 'txn_Lh2LRvtK4euznW686ScmNNkw4'
 ```
 
 You can specify a prefix and the length of the id to generate:
 ```
-  IdGenerator.generateId("txn", 10) => 'txn_qGoxTSqc30'
-  IdGenerator.generateId("txn", 30) => 'txn_6CKbkcPQgk8OCONGu82Tv2rv664P2H'
+IdGenerator.generateId("txn", 10) => 'txn_qGoxTSqc30'
+IdGenerator.generateId("txn", 30) => 'txn_6CKbkcPQgk8OCONGu82Tv2rv664P2H'
 ```
+
+### JSON Parsing
+
+```
+Account account = ...;
+JSON.stringify(account);
+=> {"id":"acc_ljHmy6Sxfasjz5KsFsXox","created":1489819061925,"updated":1489819061925,"firstName":"John","lastName":"Smith","locked":false}
+```
+
 
 ## Building from Source
 
