@@ -85,8 +85,6 @@ This method will throw a *JsonParsingException* at runtime if the JSON string ca
 ## Reflection
 The Reflection API provides a simple interface on top of the Java Reflection API for getting and setting property values on Java objects.
 
-#### Getting Values
-
 ```java
 public class Entity {
     
@@ -119,8 +117,11 @@ Person person = new Person();
 person.setId("abcd12345");
 person.setName("Sally");
 person.setAddress(address);
+```
 
+#### Getting Values
 
+```java
 // Retrieves the 'id' property from the Person Entity superclass.
 Reflection.get(person, "id"); => "abcd12345"
 
@@ -140,8 +141,21 @@ Address address = (Address) Reflection.get(person, "address");
 Address address = Reflection.get(person, "address", Address.class);
 ```
 
-#### Getting Values
+#### Setting Values
 
+```java
+// Sets the 'id' property from the Person Entity superclass.
+Reflection.set(person, "id", "11111");
+
+// Sets the 'name' property from the Person object.
+Reflection.set(person, "name", "Suzan");
+
+// Sets the 'suburb' property from the composed Address object.
+Reflection.get(person, "address.suburb", "St. Kilda");
+
+// Sets the 'id' property from the composed Address Entity superclass.
+Reflection.get(person, "address.id", "22222");
+```
 
 
 # Building from Source
