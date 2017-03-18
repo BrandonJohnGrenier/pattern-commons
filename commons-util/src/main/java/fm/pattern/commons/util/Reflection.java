@@ -23,11 +23,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @SuppressWarnings({ "rawtypes" })
-public final class ReflectionUtils {
+public final class Reflection {
 
-	private static final Logger log = LoggerFactory.getLogger(ReflectionUtils.class);
+	private static final Logger log = LoggerFactory.getLogger(Reflection.class);
 
-	private ReflectionUtils() {
+	private Reflection() {
 
 	}
 
