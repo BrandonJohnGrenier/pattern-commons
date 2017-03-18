@@ -16,7 +16,7 @@
 
 package fm.pattern.commons.util.model;
 
-public class ComposedModel {
+public class ComposedModel extends ParentModel {
 
 	private Integer hours;
 	private Integer minutes;

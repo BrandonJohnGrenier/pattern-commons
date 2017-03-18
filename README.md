@@ -93,6 +93,13 @@ public class Entity {
     
 }
 
+public class Address extends Entity {
+    
+    private String suburb;
+    ...
+    
+}
+
 public class Person extends Entity {
     
     private String name;
@@ -101,18 +108,27 @@ public class Person extends Entity {
     
 }
 
-Person person = new Person();
-person.setName("Sally");
-person.setId("abcd12345");
+Address address = new Address();
+address.setId("1234abcd");
+address.setSuburb("Bondi");
 
-// Retrieves the id property from the Entity superclass.
+Person person = new Person();
+person.setId("abcd12345");
+person.setName("Sally");
+person.setAddress(address);
+
+
+// Retrieves the 'id' property from the Person Entity superclass.
 Reflection.getValue(person, "id"); => "abcd12345"
 
-// Retrieves the name property from the Person object.
+// Retrieves the 'name' property from the Person object.
 Reflection.getValue(person, "name"); => "Sally"
 
-// Retrieves the nested suburb property from the composed Address object.
+// Retrieves the 'suburb' property from the composed Address object.
 Reflection.getValue(person, "address.suburb"); => "Bondi"
+
+// Retrieves the 'id' property from the composed Address Entity superclass.
+Reflection.getValue(person, "address.id"); => "1234abcd"
 ```
 
 # Building from Source

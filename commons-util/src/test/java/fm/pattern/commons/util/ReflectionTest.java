@@ -55,14 +55,18 @@ public class ReflectionTest {
         ComposedModel composed = new ComposedModel();
         composed.setHours(10);
         composed.setMinutes(40);
-        
+        composed.setKey("some key");
+        composed.setValue("some value");
+
         SimpleModel model = new SimpleModel("first", "last", 200);
         model.setModel(composed);
 
         assertThat(Reflection.getValue(model, "model.hours")).isEqualTo(10);
         assertThat(Reflection.getValue(model, "model.minutes")).isEqualTo(40);
+        assertThat(Reflection.getValue(model, "model.key")).isEqualTo("some key");
+        assertThat(Reflection.getValue(model, "model.value")).isEqualTo("some value");
     }
-    
+
     @Test
     public void shouldBeAbleToSetThePropertyValueOfTheTargetObject() {
         SimpleModel model = new SimpleModel("value", "value", 200);
@@ -80,35 +84,29 @@ public class ReflectionTest {
     public void shouldBeAbleToSetThePropertyValueOnASuperclassOfTheTargetObject() {
         SimpleModel model = new SimpleModel("value", "value", 200);
 
-        Reflection.setValue(model, "key", "some key", 1);
-        Reflection.setValue(model, "value", "some value", 1);
+        Reflection.setValue(model, "key", "some key");
+        Reflection.setValue(model, "value", "some value");
 
         assertThat(model.getKey()).isEqualTo("some key");
         assertThat(model.getValue()).isEqualTo("some value");
     }
 
     @Test
-    public void shouldNotBeAbleToSetThePropertyValueOnASuperclassOfTheTargetObjectWhenTheAncestorIsInvalid() {
-        SimpleModel model = new SimpleModel("value", "value", 200);
-
-        Reflection.setValue(model, "key", "some key", 6);
-        Reflection.setValue(model, "value", "some value", 6);
-
-        assertThat(model.getKey()).isNull();
-        assertThat(model.getValue()).isNull();
-    }
-
-    @Test
     public void shouldBeAbleToSetThePropertyValueOnAComposedObject() {
         ComposedModel composed = new ComposedModel();
+
         SimpleModel model = new SimpleModel("value", "value", 200);
         model.setModel(composed);
 
         Reflection.setValue(model, "model.minutes", 20);
         Reflection.setValue(model, "model.hours", 20);
+        Reflection.setValue(model, "model.key", "some key");
+        Reflection.setValue(model, "model.value", "some value");
 
         assertThat(model.getModel().getHours()).isEqualTo(20);
         assertThat(model.getModel().getMinutes()).isEqualTo(20);
+        assertThat(model.getModel().getKey()).isEqualTo("some key");
+        assertThat(model.getModel().getValue()).isEqualTo("some value");
     }
 
     @Test
@@ -128,24 +126,11 @@ public class ReflectionTest {
     public void shouldNotBeAbleToSetThePropertyValueOnAnObjectWhenTheObjectIsNull() {
         SimpleModel model = new SimpleModel("value", "value", 200);
 
-        Reflection.setValue(null, "key", "some key", 1);
-        Reflection.setValue(model, null, "some value", 1);
+        Reflection.setValue(null, "key", "some key");
+        Reflection.setValue(model, null, "some value");
 
         assertThat(model.getKey()).isEqualTo(null);
         assertThat(model.getValue()).isEqualTo(null);
-    }
-
-    @Test
-    public void shouldNotBeAbleToSetThePropertyValueOnAComposedObjectWithAnInvalidAncestor() {
-        ComposedModel composed = new ComposedModel();
-        SimpleModel model = new SimpleModel("value", "value", 200);
-        model.setModel(composed);
-
-        Reflection.setValue(model, "model.minutes", 20, 5);
-        Reflection.setValue(model, "model.hours", 20, 5);
-
-        assertThat(model.getModel().getHours()).isNull();
-        assertThat(model.getModel().getMinutes()).isNull();
     }
 
     @Test
