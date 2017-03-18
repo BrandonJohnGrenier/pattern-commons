@@ -83,28 +83,36 @@ System.out.pritnln(person.getLastName()); => "Smith"
 This method will throw a *JsonParsingException* at runtime if the JSON string cannot be deserialized.
 
 ## Reflection
-The Reflection API provides a consistent set of interfaces for both getting and setting properties on Java objects.
+The Reflection API provides a simple interface on top of the Java Reflection API for getting and setting property values on Java objects.
 
 ```java
 public class Entity {
     
     private String id;
-
+    ...
+    
 }
 
 public class Person extends Entity {
     
     private String name;
     private Address address;
-
+    ...
+    
 }
 
-
 Person person = new Person();
-...
-Reflection.getValue(person, "name");
-Reflection.getValue(person, "address.suburb");
-Reflection.getValue(person, "id");
+person.setName("Sally");
+person.setId("abcd12345");
+
+// Retrieves the id property from the Entity superclass.
+Reflection.getValue(person, "id"); => "abcd12345"
+
+// Retrieves the name property from the Person object.
+Reflection.getValue(person, "name"); => "Sally"
+
+// Retrieves the nested suburb property from the composed Address object.
+Reflection.getValue(person, "address.suburb"); => "Bondi"
 ```
 
 # Building from Source
