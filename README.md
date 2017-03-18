@@ -86,6 +86,20 @@ This method will throw a *JsonParsingException* at runtime if the JSON string ca
 The Reflection API provides a consistent set of interfaces for both getting and setting properties on Java objects.
 
 ```java
+public class Entity {
+    
+    private String id;
+
+}
+
+public class Person extends Entity {
+    
+    private String name;
+    private Address address;
+
+}
+
+
 Person person = new Person();
 ...
 Reflection.getValue(person, "name");
