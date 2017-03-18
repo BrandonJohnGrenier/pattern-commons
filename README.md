@@ -16,6 +16,8 @@ To get started, add the following dependency to your depedency list:
 
 ## Identity Generation
 
+The id generator uses a cryptographically strong random number generator to produce sequences of alphanumeric strings that can be used as unique identifiers.
+
 By default, the id generator will produce a 25 character length alphanumeric string, with a mix of uppercase and lowercase characters:
 ```
   IdGenerator.generateId() => 'jDWatQsPtRNOMhYAnVWUDF3LE'
