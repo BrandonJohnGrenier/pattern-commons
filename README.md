@@ -3,7 +3,7 @@
 
 # Introduction
 
-Pattern Commons is a minimal library for common functions including identity generation, JSON parsing and reflection.
+Pattern Commons provides minimalist interfaces for common functions including identity generation, JSON parsing and reflection.
 
 To get started, add the following dependency to your depedency list:
 ```xml
@@ -42,7 +42,7 @@ IdGenerator.generateId("txn", 30) => "txn_6CKbkcPQgk8OCONGu82Tv2rv664P2H"
 
 ## JSON Parsing
 
-The JSON API exposes a minimal, JavaScript-inspired interface on top of the excellent [Jackson library](https://github.com/FasterXML/jackson) for JSON parsing.
+The JSON API exposes a JavaScript-inspired interface on top of the excellent [Jackson library](https://github.com/FasterXML/jackson) for JSON parsing.
 
 #### Converting Java to JSON
 The stringify() method serializes a Java value into a JSON string.
@@ -83,7 +83,7 @@ System.out.pritnln(person.getLastName()); => "Smith"
 This method will throw a *JsonParsingException* at runtime if the JSON string cannot be deserialized.
 
 ## Reflection
-The Reflection API provides a simple map-like interface on top of the Java Reflection API for getting and setting property values on Java objects. We'll run through a number of examples  using the following object model:
+The Reflection API provides a map-like interface on top of the Java Reflection API for getting and setting property values on Java objects. We'll run through a number of examples  using the following object model:
 
 ```java
 public class Entity {
@@ -159,9 +159,13 @@ Reflection.set(person, "address.suburb", "St. Kilda");
 // Sets the 'id' property on the composed Address object superclass.
 Reflection.set(person, "address.id", "22222");
 
-// Setting an invalid property value will return a null instance. Otherwise, the updated instance is returned.
-Person updated = Reflect.set(person, "invalid", "12345");
+// Setting an invalid property value will return a null instance.
+Person updated = Reflection.set(person, "invalid_property", "12345");
 System.out.println(updated) => null
+
+// Setting a valid property value will return the updated instance.
+Person updated = Reflection.set(person, "name", "Katherine");
+System.out.println(updated) => {"id":"11111", "name":"Katherine", ...}
 ```
 
 
