@@ -14,31 +14,31 @@
  * limitations under the License.
  */
 
-package fm.pattern.commons.util.model;
+package fm.pattern.minimal.model;
 
-public class ParentModel {
+public class ComposedModel extends ParentModel {
 
-	private String key;
-	private String value;
+	private Integer hours;
+	private Integer minutes;
 
-	public ParentModel() {
+	public ComposedModel() {
 
 	}
 
-	public String getKey() {
-		return key;
+	public Integer getHours() {
+		return hours;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setHours(Integer hours) {
+		this.hours = hours;
 	}
 
-	public String getValue() {
-		return value;
+	public Integer getMinutes() {
+		return minutes;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setMinutes(Integer minutes) {
+		this.minutes = minutes;
 	}
 
 }

@@ -14,14 +14,31 @@
  * limitations under the License.
  */
 
-package fm.pattern.commons.util;
+package fm.pattern.minimal.model;
 
-public class JsonParsingException extends RuntimeException {
+public class ParentModel {
 
-	private static final long serialVersionUID = -7877741986269575099L;
+	private String key;
+	private String value;
 
-	public JsonParsingException(Exception e) {
-		super(e);
+	public ParentModel() {
+
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 }

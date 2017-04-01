@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-package fm.pattern.commons.util;
+package fm.pattern.minimal;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
 import org.junit.Test;
+
+import fm.pattern.minimal.IdGenerator;
 
 public class IdGeneratorTest {
 

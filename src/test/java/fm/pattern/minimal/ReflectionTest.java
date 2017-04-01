@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package fm.pattern.commons.util;
+package fm.pattern.minimal;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
 import org.junit.Test;
 
-import fm.pattern.commons.util.model.ComposedModel;
-import fm.pattern.commons.util.model.SimpleModel;
+import fm.pattern.minimal.Reflection;
+import fm.pattern.minimal.model.ComposedModel;
+import fm.pattern.minimal.model.SimpleModel;
 
 public class ReflectionTest {
 

@@ -1,4 +1,4 @@
-package fm.pattern.commons.util;
+package fm.pattern.minimal;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fm.pattern.commons.util;
+package fm.pattern.minimal;
 
 import org.apache.commons.beanutils.PropertyUtils;
 

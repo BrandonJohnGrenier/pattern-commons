@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-package fm.pattern.commons.util;
+package fm.pattern.minimal;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
 import org.junit.Test;
 
-import fm.pattern.commons.util.model.SimpleModel;
+import fm.pattern.minimal.JSON;
+import fm.pattern.minimal.JsonParsingException;
+import fm.pattern.minimal.model.SimpleModel;
 
 public class JSONTest {
 

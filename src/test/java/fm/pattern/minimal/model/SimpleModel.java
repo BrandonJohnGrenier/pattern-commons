@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fm.pattern.commons.util.model;
+package fm.pattern.minimal.model;
 
 public class SimpleModel extends ParentModel {
 

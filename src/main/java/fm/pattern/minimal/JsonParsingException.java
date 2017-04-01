@@ -14,31 +14,14 @@
  * limitations under the License.
  */
 
-package fm.pattern.commons.util.model;
+package fm.pattern.minimal;
 
-public class ComposedModel extends ParentModel {
+public class JsonParsingException extends RuntimeException {
 
-	private Integer hours;
-	private Integer minutes;
+	private static final long serialVersionUID = -7877741986269575099L;
 
-	public ComposedModel() {
-
-	}
-
-	public Integer getHours() {
-		return hours;
-	}
-
-	public void setHours(Integer hours) {
-		this.hours = hours;
-	}
-
-	public Integer getMinutes() {
-		return minutes;
-	}
-
-	public void setMinutes(Integer minutes) {
-		this.minutes = minutes;
+	public JsonParsingException(Exception e) {
+		super(e);
 	}
 
 }

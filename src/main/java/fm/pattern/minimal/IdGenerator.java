@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package fm.pattern.commons.util;
+package fm.pattern.minimal;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
