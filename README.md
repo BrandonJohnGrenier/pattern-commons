@@ -1,17 +1,17 @@
-[![Build Status](https://travis-ci.org/PatternFM/commons.svg?branch=master)](https://travis-ci.org/PatternFM/commons)
+[![Build Status](https://travis-ci.org/PatternFM/commons.svg?branch=master)](https://travis-ci.org/PatternFM/minimal)
 [![Coverage Status](https://coveralls.io/repos/github/PatternFM/commons/badge.svg?branch=master)](https://coveralls.io/github/PatternFM/commons?branch=master) 
 [![codebeat badge](https://codebeat.co/badges/d04322bd-1052-4832-a6bc-5f0ec3b6a37c)](https://codebeat.co/projects/github-com-patternfm-commons-master)  
 
 # Introduction
 
-Pattern Commons provides minimalist interfaces for common functions including identity generation, JSON parsing and reflection.
+Minimal is an API that exposes minimalist interfaces for common functions including identity generation, JSON parsing and reflection.
 
 To get started, add the following dependency to your depedency list:
 ```xml
 <dependency>
     <groupId>fm.pattern</groupId>
-    <artifactId>commons-util</artifactId>
-    <version>1.0.9</version>
+    <artifactId>minimal</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
