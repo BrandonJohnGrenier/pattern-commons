@@ -4,7 +4,7 @@
 
 # Introduction
 
-Minimal is an API that exposes minimalist interfaces for common functions including identity generation, JSON parsing and reflection.
+Minimal is a simple API that exposes minimalist interfaces for common functions including identity generation, JSON parsing and reflection.
 
 To get started, add the following dependency to your depedency list:
 ```xml

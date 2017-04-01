@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <name>Commons</name>
-   <description>An API that exposes minimalist interfaces for common functions including identity generation, JSON parsing and reflection.</description>
+   <description>A simple Java API that exposes minimalist interfaces for common functions including identity generation, JSON parsing and reflection.</description>
    <url>http://pattern.fm/minimal/</url>
 
    <groupId>fm.pattern</groupId>
