@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/PatternFM/commons.svg?branch=master)](https://travis-ci.org/PatternFM/minimal)
-[![Coverage Status](https://coveralls.io/repos/github/PatternFM/commons/badge.svg?branch=master)](https://coveralls.io/github/PatternFM/commons?branch=master) 
-[![codebeat badge](https://codebeat.co/badges/d04322bd-1052-4832-a6bc-5f0ec3b6a37c)](https://codebeat.co/projects/github-com-patternfm-commons-master)  
+[![Build Status](https://travis-ci.org/PatternFM/minimal.svg?branch=master)](https://travis-ci.org/PatternFM/minimal)
+[![Coverage Status](https://coveralls.io/repos/github/PatternFM/minimal/badge.svg?branch=master)](https://coveralls.io/github/PatternFM/minimal?branch=master) 
+[![codebeat badge](https://codebeat.co/badges/2306bb2f-ff63-4eed-adf2-dfa01d4c95f3)](https://codebeat.co/projects/github-com-patternfm-minimal-master)  
 
 # Introduction
 
