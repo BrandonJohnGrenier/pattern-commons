@@ -17,7 +17,7 @@ A getting started guide and reference documentation for Minimal is hosted on the
 Both JDK 8 and Maven 3 are required to build Minimal from source. With these prerequisites in place you can build Minimal by:
 ```
 git clone https://github.com/PatternFM/minimal.git
-cd commons
+cd minimal
 mvn clean install
 ```
 
